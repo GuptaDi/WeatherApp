@@ -92,3 +92,11 @@ img {
 .left, .right {
   background: red;
 }
+
+
+.slider-controls{
+  
+  text-align: center;
+    padding: 10px;
+    margin-bottom: 30px;
+}

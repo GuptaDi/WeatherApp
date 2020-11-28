@@ -29,7 +29,7 @@ export class DashboardComponent implements OnInit {
 
   getWeatherDetails() {
     this.isUnitsChecked = false;
-    let location = 'London';
+    let location = 'Frankfurt';
     let maxDays = 10;
 
     const unit = this.isUnitsChecked ? 'f' : 'metric';
