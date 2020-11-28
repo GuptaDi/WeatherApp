@@ -11,13 +11,11 @@
 
     <ng-container *ngFor="let weatherDataObj of weatherData.list; let i = index">
 
-        <app-weather-detail *ngIf="i === currentSlide" [weatherDataObj]=weatherDataObj class="slide">
-        </app-weather-detail>
-        <app-weather-detail *ngIf="i === currentSlide + 1" [weatherDataObj]=weatherDataObj class="slide">
-        </app-weather-detail>
-        <app-weather-detail *ngIf="i === currentSlide + 2" [weatherDataObj]=weatherDataObj class="slide">
-        </app-weather-detail>
+        <app-weather-card *ngIf="i === currentSlide" [weatherDataObj]=weatherDataObj class="slide">
+        </app-weather-card>
+        <app-weather-card *ngIf="i === currentSlide + 1" [weatherDataObj]=weatherDataObj class="slide">
+        </app-weather-card>
+        <app-weather-card *ngIf="i === currentSlide + 2" [weatherDataObj]=weatherDataObj class="slide">
+        </app-weather-card>
     </ng-container>
-
-
 </div>

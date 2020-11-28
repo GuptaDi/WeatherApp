@@ -1,6 +1,6 @@
 <div *ngIf="weatherData; else loading">
     <div class='unitsToggle'>
-        <input type="checkbox" name="units" id="units" (click)="switchUnits($event)" [checked]="isUnitsChecked">
+        <input type="checkbox" name="units" id="units" (click)="switchUnits($event)" [checked]="isImperial">
         <label>{{unitsLabel}}</label>
     </div>
     <div class="container">

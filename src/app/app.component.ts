@@ -1,8 +1,4 @@
 import { Component } from '@angular/core';
-import { DashboardComponent } from './dashboard/dashboard.component';
-// import { AnimationBuilder, trigger, animate, style, transition, state } from '@angular/animations';
-
-
 
 @Component({
   selector: 'app-root',
@@ -10,13 +6,11 @@ import { DashboardComponent } from './dashboard/dashboard.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'weather-app1';
+  title = 'Weather App';
   constructor() {
-
   }
 
   ngOnInit() {
-    console.log('ngoninit');
   }
 
 }

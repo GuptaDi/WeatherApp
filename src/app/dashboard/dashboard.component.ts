@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
-import weatherData from '../daily.json';
-import { WeatherApiService } from '../service/weather-api.service';
-
+import { WeatherApiService } from '../core/services/weather-api.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,44 +7,42 @@ import { WeatherApiService } from '../service/weather-api.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  isUnitsChecked = true
+  isImperial = true
   unitsLabel = 'Imperial: °F, mph'
+  weatherData: any;
 
   constructor(public weatherApiService: WeatherApiService) { }
-  weatherData: any;
 
   ngOnInit(): void {
     this.getWeatherDetails();
   }
 
   switchUnits(event) {
-    console.log(event.target.checked, event);
-    this.isUnitsChecked = event.target.checked;
-    this.unitsLabel = this.isUnitsChecked ? 'Imperial: °F, mph' : 'Metric: °C, m/s';
+    this.isImperial = event.target.checked;
+    this.unitsLabel = this.isImperial ? 'Imperial: °F, mph' : 'Metric: °C, m/s';
     this.getWeatherDetails();
   }
 
   getWeatherDetails() {
-    this.isUnitsChecked = false;
-    let location = 'Frankfurt';
-    let maxDays = 10;
+    const location = 'Frankfurt';
+    const maxDays = 10;
+    const unit = this.isImperial ? 'imperial' : 'metric';
 
-    const unit = this.isUnitsChecked ? 'f' : 'metric';
     const searchData = {
       units: unit,
       place: location,
       count: maxDays
-    }
+    };
+
     let serviceData = this.weatherApiService.getWeatherForLocation(searchData).subscribe(
       data => {
-        console.log(data)
         this.weatherData = data;
       },
       error => {
         console.log('Error');
       }
     );
-    console.log(serviceData);
+
   }
 
 }
