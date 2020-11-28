@@ -17,6 +17,7 @@ export class WeatherSliderComponent implements OnInit {
   constructor() { }
   ngOnInit(): void {
     this.slides = this.weatherData.list;
+    console.log(this.weatherData)
   }
 
   onPreviousClick() {

@@ -1,12 +1,14 @@
-<div class="container">
-    <div id="location-head">
-        <h2>{{weatherData.city.name}},{{weatherData.city.country}}</h2>
+<div *ngIf="weatherData; else loading">
+    {{ obs }}
+    <div class="container">
+        <div id="location-head">
+            <h2>{{weatherData.city.name}},{{weatherData.city.country}}</h2>
+        </div>
+        <input type="checkbox" name="units" id="units" (click)="switchUnits($event)" [checked]="isUnitsChecked">
+        <label>{{unitsLabel}}</label>
+        <app-weather-slider [weatherData]=weatherData></app-weather-slider>
     </div>
-    <input type="checkbox" name="units" id="units" (click)="switchUnits($event)">
-    <label>{{unitsLabel}}</label>
-    <app-weather-slider [weatherData]=weatherData></app-weather-slider>
-
-
 
 
 </div>
+<ng-template #loading>Loading...</ng-template>

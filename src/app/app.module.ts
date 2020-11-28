@@ -7,7 +7,8 @@ import { AppComponent } from './app.component';
 import { WeatherDetailComponent } from './weather-detail/weather-detail.component';
 import { WeatherSliderComponent } from './weather-slider/weather-slider.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-
+import { HttpClientModule } from '@angular/common/http';
+import { WeatherApiService } from './service/weather-api.service';
 
 @NgModule({
   declarations: [
@@ -18,9 +19,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [WeatherApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
