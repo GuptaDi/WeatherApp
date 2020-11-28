@@ -1,0 +1,19 @@
+<!-- carousel -->
+<div class="carousel">
+    <ng-container *ngFor="let weatherDataObj of weatherData.list; let i = index">
+
+        <app-weather-detail *ngIf="i === currentSlide" [weatherDataObj]=weatherDataObj class="slide">
+        </app-weather-detail>
+        <app-weather-detail *ngIf="i === currentSlide + 1" [weatherDataObj]=weatherDataObj class="slide">
+        </app-weather-detail>
+        <app-weather-detail *ngIf="i === currentSlide + 2" [weatherDataObj]=weatherDataObj class="slide">
+        </app-weather-detail>
+    </ng-container>
+
+    <button class="control next" (click)="onNextClick()" [disabled]="rightEnd">
+        <span class="arrow right"></span>
+    </button>
+    <button class="control prev" (click)="onPreviousClick()" [disabled]="leftEnd">
+        <span class="arrow left"></span>
+    </button>
+</div>

@@ -1,0 +1,18 @@
+* {
+    box-sizing: border-box;
+}
+body{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.carousel-wrapper {
+    overflow: hidden;
+  }
+  .carousel {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 6000px;
+  }
+  .carousel-inner {
+    display: flex;
+  }

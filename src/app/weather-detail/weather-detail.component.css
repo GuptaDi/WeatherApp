@@ -1,0 +1,66 @@
+
+.card{
+    width: 300px;
+    height: 100%;
+    border: 1px solid #ccc;
+    padding: 10px 10px 10px 25px;
+    border-radius: 10px;
+    background: -webkit-linear-gradient(to right, #ff6e7f, #bfe9ff); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #ff6e7f, #bfe9ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: #fff;
+    float: left;
+    margin-left: 20px;
+}
+
+.flex-item {
+    justify-content: center;
+  }
+
+.date-time{
+    color: #ff0000;
+}
+
+.location-name{
+    margin: 0 0 10px 0;
+}
+
+ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+   
+}
+li{
+    display: inline-block;
+}
+
+.card-head{
+    height: 30%;
+    padding-bottom: 15px;
+    padding-top: 5px;
+    max-height: 400px;
+}
+
+
+.card-body{
+    height: 70%;
+}
+
+.temperature-info{
+    width: 100%;
+    display: flex;
+    height: 30%;
+}
+.temperature{
+    float: left;
+    width: 100%;
+    font-weight: bold;
+    height: 40%;
+    font-size: 40px;
+    padding-bottom: 20px;
+}
+ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+     list-style-type: none;
+  }

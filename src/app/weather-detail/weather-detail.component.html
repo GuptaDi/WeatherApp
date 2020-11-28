@@ -1,0 +1,19 @@
+<div class="card flex-items">
+    <header class="card-head">
+        <time class="date-time">
+            <span> {{weatherDataObj.dt  * 1000 | date:'yyyy-MM-dd'}} </span>
+        </time>
+    </header>
+
+    <summary class="card-body">
+        <div class="temperature">
+            {{weatherDataObj.temp.day}}
+        </div>
+        <div class="temperature-info">
+            <span> Humidity: {{weatherDataObj.humidity}} </span>
+            <span> Sunrise: {{weatherDataObj.sunrise * 1000 | date:'shortTime' }} </span>
+            <span> Sunset: {{weatherDataObj.sunset * 1000 | date:'shortTime' }} </span>
+
+        </div>
+    </summary>
+</div>
