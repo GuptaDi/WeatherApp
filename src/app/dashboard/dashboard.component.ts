@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Weather } from '../core/models/weather.model';
 import { WeatherApiService } from '../core/services/weather-api.service';
+import { GlobalErrorHandler } from '../shared/errors/errorhandler';
+import { LogService } from '../shared/logs/log.service';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -12,7 +15,7 @@ export class DashboardComponent implements OnInit {
   unitsLabel = 'Imperial: °F, mph'
   weatherData: Weather;
 
-  constructor(public weatherApiService: WeatherApiService) { }
+  constructor(public weatherApiService: WeatherApiService, private logger: LogService, private error: GlobalErrorHandler) { }
 
   ngOnInit(): void {
     this.getWeatherDetails();
@@ -25,6 +28,7 @@ export class DashboardComponent implements OnInit {
   }
 
   getWeatherDetails() {
+    this.logger.log("Getting weather details");
     const location = 'Frankfurt';
     const maxDays = 10;
     const unit = this.isImperial ? 'imperial' : 'metric';
@@ -40,7 +44,7 @@ export class DashboardComponent implements OnInit {
         this.weatherData = <Weather>data;
       },
       error => {
-        console.log('Error');
+        this.error.handleError(error)
       }
     );
 
