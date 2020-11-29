@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Weather } from '../core/models/weather.model';
 import { WeatherApiService } from '../core/services/weather-api.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { WeatherApiService } from '../core/services/weather-api.service';
 export class DashboardComponent implements OnInit {
   isImperial = true
   unitsLabel = 'Imperial: °F, mph'
-  weatherData: any;
+  weatherData: Weather;
 
   constructor(public weatherApiService: WeatherApiService) { }
 
@@ -36,7 +37,7 @@ export class DashboardComponent implements OnInit {
 
     let serviceData = this.weatherApiService.getWeatherForLocation(searchData).subscribe(
       data => {
-        this.weatherData = data;
+        this.weatherData = <Weather>data;
       },
       error => {
         console.log('Error');
