@@ -48,7 +48,7 @@ export class DashboardComponent implements OnInit {
 
     let serviceData = this.weatherApiService.getWeatherForLocation(searchData).subscribe(
       data => {
-        this.weatherData = <Weather>data;
+        this.weatherData = data as Weather;
       },
       error => {
         this.error.handleError(error)
