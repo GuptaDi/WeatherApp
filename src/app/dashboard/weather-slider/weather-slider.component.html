@@ -1,21 +1,24 @@
-<!-- carousel -->
-<div class="carousel">
+<div class="weather-slider">
     <div class="slider-controls">
-        <button (click)="onPreviousClick()" [disabled]="leftEnd">
+        <button (click)="onPreviousClick()" [disabled]="leftEnd" class="button-left">
             <span class="arrow left"></span>
         </button>
-        <button (click)="onNextClick()" [disabled]="rightEnd">
+        <button (click)="onNextClick()" [disabled]="rightEnd" class="button-right">
             <span class="arrow right"></span>
         </button>
     </div>
+    <div class="weatherData">
+        <ng-container *ngFor="let weatherDataObj of weatherData.list; let i = index">
 
-    <ng-container *ngFor="let weatherDataObj of weatherData.list; let i = index">
-
-        <app-weather-card *ngIf="i === currentSlide" [weatherDataObj]=weatherDataObj class="slide">
-        </app-weather-card>
-        <app-weather-card *ngIf="i === currentSlide + 1" [weatherDataObj]=weatherDataObj class="slide">
-        </app-weather-card>
-        <app-weather-card *ngIf="i === currentSlide + 2" [weatherDataObj]=weatherDataObj class="slide">
-        </app-weather-card>
-    </ng-container>
+            <app-weather-card *ngIf="i === currentSlide" [weatherDataObj]=weatherDataObj [temperatureUnit]=shortUnit
+                class="slide">
+            </app-weather-card>
+            <app-weather-card *ngIf="i === currentSlide + 1" [weatherDataObj]=weatherDataObj [temperatureUnit]=shortUnit
+                class="slide">
+            </app-weather-card>
+            <app-weather-card *ngIf="i === currentSlide + 2" [weatherDataObj]=weatherDataObj [temperatureUnit]=shortUnit
+                class="slide">
+            </app-weather-card>
+        </ng-container>
+    </div>
 </div>

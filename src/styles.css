@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  background: #667db6;
+  background: -webkit-linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6);
+  background: linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6);
+  line-height: 1.6;
+}
+
+

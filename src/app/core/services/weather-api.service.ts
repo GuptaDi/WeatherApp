@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { AppConfig } from 'src/app/app.config';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +12,10 @@ export class WeatherApiService {
   }
 
   getWeatherForLocation(searchData) {
-    const appId = '542ffd081e67f4512b705f89d2a611b2';
-    console.log(searchData);
-    return this.http.get(`http://api.openweathermap.org/data/2.5/forecast/daily?q=${searchData.place}&mode=json&units=${searchData.units}&cnt=${searchData.count}&appid=${appId}`);
+    const { url } = AppConfig.settings.apiServer;
+    const { appId, location, daysCount } = AppConfig.settings.app;
+
+    return this.http.get(`${url}?q=${location}&mode=json&units=${searchData.unit}&cnt=${daysCount}&appid=${appId}`);
   }
 
 

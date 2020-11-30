@@ -1,41 +1,18 @@
-<div *ngIf="weatherData; else loading">
-    <div class='unitsToggle'>
-        <input type="checkbox" name="units" id="units" (click)="switchUnits($event)" [checked]="isImperial">
-        <label>{{unitsLabel}}</label>
-    </div>
-    <div class="container">
-        <div id="location-head">
-            <h2>{{weatherData.city.name}}, {{weatherData.city.country}}</h2>
+<section class="container flex-grid section-padding">
+    <div *ngIf="weatherData; else loading">
+        <div class="unitsToggle">
+            <h4>
+                <input type="checkbox" name="units" id="units" class="units" (click)="switchUnits($event)"
+                    [checked]="isImperial"> &nbsp; <label>{{unitLabel}}</label>
+            </h4>
         </div>
+        <div class="weather-container">
+            <div id="location-name">
+                <h2>{{weatherData.city.name}}</h2>
+            </div>
 
-        <app-weather-slider [weatherData]=weatherData></app-weather-slider>
+            <app-weather-slider [weatherData]=weatherData [shortUnit]=shortUnit></app-weather-slider>
+        </div>
     </div>
-
-
-</div>
-<ng-template #loading>Loading...</ng-template>
-
-
-<!-- 
-<div class="container">
-    <div class="box bg1">
-        <h3>12:50 PM</h3>
-        <div class="box-sub">Simple</div>
-        <div class="circle">A</div>
-    </div>
-    <div class="box bg2">
-        <h3>12:50 PM</h3>
-        <div class="box-sub">Simple</div>
-        <div class="circle c1">A</div>
-    </div>
-    <div class="box bg3">
-        <h3>12:50 PM</h3>
-        <div class="box-sub">Simple</div>
-        <div class="circle c2">A</div>
-    </div>
-    <div class="box bg4">
-        <h3>12:50 PM</h3>
-        <div class="box-sub">Simple</div>
-        <div class="circle c3">A</div>
-    </div>
-</div> -->
+    <ng-template #loading>Loading...</ng-template>
+</section>

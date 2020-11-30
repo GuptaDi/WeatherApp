@@ -1,0 +1,10 @@
+{
+    "app": {
+        "appId": "542ffd081e67f4512b705f89d2a611b2",
+        "location": "Frankfurt",
+        "daysCount": 10
+    },
+    "apiServer": {
+        "url": "http://api.openweathermap.org/data/2.5/forecast/daily"
+    }
+}

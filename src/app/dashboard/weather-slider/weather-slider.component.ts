@@ -1,21 +1,20 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { LogService } from 'src/app/shared/logs/log.service';
 
-
-
 @Component({
   selector: 'app-weather-slider',
   templateUrl: './weather-slider.component.html',
   styleUrls: ['./weather-slider.component.css']
 })
+
 export class WeatherSliderComponent implements OnInit {
   @Input() weatherData;
+  @Input() shortUnit;
 
   currentSlide = 0;
   weatherList = [];
-  leftEnd = true
-  rightEnd = false
-
+  leftEnd = true;
+  rightEnd = false;
   constructor(private logger: LogService) { }
 
   ngOnInit(): void {

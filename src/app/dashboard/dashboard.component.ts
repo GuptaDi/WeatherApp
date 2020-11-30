@@ -3,6 +3,7 @@ import { Weather } from '../core/models/weather.model';
 import { WeatherApiService } from '../core/services/weather-api.service';
 import { GlobalErrorHandler } from '../shared/errors/errorhandler';
 import { LogService } from '../shared/logs/log.service';
+import { SHORT_UNIT_C, SHORT_UNIT_F, UNIT_LABEL_IMPERIAL, UNIT_LABEL_METRIC, UNIT_URL_IMPERIAL, UNIT_URL_METRIC } from 'src/app/shared/constants/app.constants';
 
 
 @Component({
@@ -11,8 +12,9 @@ import { LogService } from '../shared/logs/log.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  isImperial = true
-  unitsLabel = 'Imperial: °F, mph'
+  isImperial = true;
+  unitLabel = UNIT_LABEL_IMPERIAL;
+  shortUnit = SHORT_UNIT_F;
   weatherData: Weather;
 
   constructor(public weatherApiService: WeatherApiService, private logger: LogService, private error: GlobalErrorHandler) { }
@@ -23,21 +25,26 @@ export class DashboardComponent implements OnInit {
 
   switchUnits(event) {
     this.isImperial = event.target.checked;
-    this.unitsLabel = this.isImperial ? 'Imperial: °F, mph' : 'Metric: °C, m/s';
+    this.unitLabel = this.isImperial ? UNIT_LABEL_IMPERIAL : UNIT_LABEL_METRIC;
+    this.shortUnit = this.getShortUnits(this.isImperial);
     this.getWeatherDetails();
   }
 
-  getWeatherDetails() {
-    this.logger.log("Getting weather details");
-    const location = 'Frankfurt';
-    const maxDays = 10;
-    const unit = this.isImperial ? 'imperial' : 'metric';
+  getShortUnits(isImperial) {
+    return this.isImperial ? SHORT_UNIT_F : SHORT_UNIT_C;
+  }
 
+  prepareUrlFields() {
+    const unit = this.isImperial ? UNIT_URL_IMPERIAL : UNIT_URL_METRIC;
     const searchData = {
-      units: unit,
-      place: location,
-      count: maxDays
+      unit
     };
+    return searchData;
+  }
+
+  getWeatherDetails() {
+    this.logger.log("Get weather details");
+    const searchData = this.prepareUrlFields();
 
     let serviceData = this.weatherApiService.getWeatherForLocation(searchData).subscribe(
       data => {
@@ -47,7 +54,5 @@ export class DashboardComponent implements OnInit {
         this.error.handleError(error)
       }
     );
-
   }
-
 }

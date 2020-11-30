@@ -7,9 +7,14 @@
 
     <summary class="card-body">
         <div class="temperature">
-            {{weatherDataObj.temp.day}}
+            <fa-icon [icon]="faIcon"></fa-icon>
+            {{weatherDataObj.temp.day}} <span>&#176;</span> {{temperatureUnit}}
+
         </div>
+        <div class="feels-like"> {{weatherDataObj.weather[0].description}} </div>
+
         <div class="temperature-info">
+
             <span> Humidity: {{weatherDataObj.humidity}} </span>
             <span> Sunrise: {{weatherDataObj.sunrise * 1000 | date:'shortTime' }} </span>
             <span> Sunset: {{weatherDataObj.sunset * 1000 | date:'shortTime' }} </span>
