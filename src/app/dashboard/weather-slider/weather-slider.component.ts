@@ -11,7 +11,7 @@ export class WeatherSliderComponent implements OnInit {
   @Input() weatherData;
   @Input() shortUnit;
 
-  currentSlide = 0;
+  currentCard = 0;
   weatherList = [];
   leftEnd = true;
   rightEnd = false;
@@ -23,18 +23,18 @@ export class WeatherSliderComponent implements OnInit {
 
   onPreviousClick() {
     this.logger.log("Previous click");
-    const previous = this.currentSlide - 1;
-    this.currentSlide = previous < 0 ? this.weatherList.length - 1 : previous;
-    this.leftEnd = this.currentSlide <= 0 ? true : false;
-    this.rightEnd = this.currentSlide >= this.weatherList.length ? true : false;
+    const previous = this.currentCard - 1;
+    this.currentCard = previous < 0 ? this.weatherList.length - 1 : previous;
+    this.leftEnd = this.currentCard <= 0 ? true : false;
+    this.rightEnd = this.currentCard >= this.weatherList.length ? true : false;
   }
 
   onNextClick() {
     this.logger.log("Next click ");
-    const next = this.currentSlide + 1;
-    this.currentSlide = next === this.weatherList.length ? 0 : next;
-    this.leftEnd = this.currentSlide <= 0 ? true : false;
-    this.rightEnd = this.currentSlide >= this.weatherList.length - 3 ? true : false;
+    const next = this.currentCard + 1;
+    this.currentCard = next === this.weatherList.length ? 0 : next;
+    this.leftEnd = this.currentCard <= 0 ? true : false;
+    this.rightEnd = this.currentCard >= this.weatherList.length - 3 ? true : false;
   }
 
 

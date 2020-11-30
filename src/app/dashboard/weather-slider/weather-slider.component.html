@@ -10,13 +10,13 @@
     <div class="weatherData">
         <ng-container *ngFor="let weatherDataObj of weatherData.list; let i = index">
 
-            <app-weather-card *ngIf="i === currentSlide" [weatherDataObj]=weatherDataObj [temperatureUnit]=shortUnit
+            <app-weather-card *ngIf="i === currentCard" [weatherDataObj]=weatherDataObj [temperatureUnit]=shortUnit
                 class="slide">
             </app-weather-card>
-            <app-weather-card *ngIf="i === currentSlide + 1" [weatherDataObj]=weatherDataObj [temperatureUnit]=shortUnit
+            <app-weather-card *ngIf="i === currentCard + 1" [weatherDataObj]=weatherDataObj [temperatureUnit]=shortUnit
                 class="slide">
             </app-weather-card>
-            <app-weather-card *ngIf="i === currentSlide + 2" [weatherDataObj]=weatherDataObj [temperatureUnit]=shortUnit
+            <app-weather-card *ngIf="i === currentCard + 2" [weatherDataObj]=weatherDataObj [temperatureUnit]=shortUnit
                 class="slide">
             </app-weather-card>
         </ng-container>
